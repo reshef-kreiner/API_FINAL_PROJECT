@@ -42,7 +42,7 @@ object AppModule {
     @Singleton
     fun provideMovieDao(database: AppDatabase) = database.movieDao()
 
-//    @Provides
-//    @Singleton
-//    fun provideFavoriteMovieDao(database: AppDatabase) = database.favoriteMovieDao()
+    @Provides
+    @Singleton
+    fun provideFavoriteMovieDao(database: AppDatabase) = database.favoriteMovieDao()
 }
