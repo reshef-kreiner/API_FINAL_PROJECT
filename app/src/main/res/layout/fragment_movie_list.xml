@@ -13,7 +13,7 @@
         android:padding="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cocktailsRv"
+            android:id="@+id/moviesRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
             android:elevation="4dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cocktailsRv"
+            app:layout_constraintEnd_toEndOf="@+id/moviesRv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
             android:textSize="21sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cocktailsRv"
+            app:layout_constraintEnd_toEndOf="@+id/moviesRv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

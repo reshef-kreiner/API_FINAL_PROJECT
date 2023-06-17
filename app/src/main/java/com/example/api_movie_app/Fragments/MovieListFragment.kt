@@ -18,6 +18,7 @@ import com.example.api_movie_app.ViewModels.MovieDetailViewModel
 import com.example.api_movie_app.ViewModels.MovieListViewModel
 import com.example.api_movie_app.data.loacal_db.CocktailDao
 import com.example.api_movie_app.data.models.Cocktail
+import com.example.api_movie_app.data.models.Movie
 import com.example.api_movie_app.data.repository.CocktailRepository
 import com.example.api_movie_app.databinding.FragmentCocktailsSearchBinding
 import com.example.api_movie_app.ui.description_page.DescriptionCocktailViewModel
@@ -29,7 +30,7 @@ import com.example.api_movie_app.databinding.FragmentMovieListBinding
 
 
 @AndroidEntryPoint
-class MovieListFragment : Fragment(), MovieListAdapter.CocktailItemListe122ner {
+class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
 
     private val viewModel : MovieListViewModel by viewModels()
 
@@ -53,7 +54,8 @@ class MovieListFragment : Fragment(), MovieListAdapter.CocktailItemListe122ner {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMovieListBinding.inflate(inflater,container,false)
@@ -63,14 +65,14 @@ class MovieListFragment : Fragment(), MovieListAdapter.CocktailItemListe122ner {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = MovieListAdapter(this)
-        binding.cocktailsRv.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.cocktailsRv.adapter = adapter
+        binding.moviesRv.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.moviesRv.adapter = adapter
 
-        viewModel.cocktails.observe(viewLifecycleOwner) {
-            Log.i("cocktails changed","start")
+        viewModel.movies.observe(viewLifecycleOwner) {
+            Log.i("movies changed","start") // ARE THESE LOG LINES NECESSARY?
             when (it.status) {
                 is Loading -> {
-                    Log.i("cocktails changed","Loading")
+                    Log.i("movies changed","Loading")
                     binding.progressBar.visibility = View.VISIBLE
                     binding.noResults.visibility = View.GONE
                 }
@@ -78,16 +80,18 @@ class MovieListFragment : Fragment(), MovieListAdapter.CocktailItemListe122ner {
                     Log.i("cocktails changed","Success")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
-                    adapter.setCocktails(it.status.data!!)
+                    adapter.setMovies(it.status.data!!) // (ArrayList(it.status.data)) IN LECTURE
                 }
 
                 is Error -> {
-                    Log.i("cocktails changed","Error")
+                    Log.i("movies changed","Error")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
             }
+
+            // NOT IN LECTURE
             if (adapter.itemCount == 0 && it.status !is Loading) {
                 binding.noResults.visibility = View.VISIBLE
                 //Toast.makeText(requireContext(), "No results", Toast.LENGTH_SHORT).show()
@@ -95,33 +99,36 @@ class MovieListFragment : Fragment(), MovieListAdapter.CocktailItemListe122ner {
         }
     }
 
-    override fun onFavoriteClick(cocktail: Cocktail) {
-        if (cocktail.isFavoriteCocktail == 0) {
-            cocktail.isFavoriteCocktail = 1
+    override fun onFavoriteClick(movie: Movie) {
+        if (movie.isFavoriteMovie == 0) {
+            movie.isFavoriteMovie = 1
         }
         else {
-            cocktail.isFavoriteCocktail = 0
+            movie.isFavoriteMovie = 0
         }
-        viewModel.updateCocktail(cocktail)
+        viewModel.updateMovie(movie)
     }
 
-    override fun onCocktailClick(cocktail: Cocktail) {
-        //MenuItemCompat.collapseActionView(myMenu.findItem(R.id.cocktailsSearch))
+    override fun onMovieClick(movie: Movie) {
+        //MenuItemCompat.collapseActionView(myMenu.findItem(R.id.movieListFragment))
         myMenu.clear()
         menuInflater.inflate(R.menu.nav_menu, myMenu)
-        findNavController().navigate(R.id.action_cocktailsSearch_to_descriptionFragment)
-        movieDetailViewModel.selectCocktail(cocktail)
+        findNavController().navigate(R.id.action_MovieList_to_MovieDetailFragment)
+        movieDetailViewModel.selectMovie(movie)
     }
 
+
+
+    //    ########################################
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.let { super.onCreateOptionsMenu(menu, it) }
         menu.clear()
         inflater?.inflate(R.menu.nav_menu, menu)
         menuInflater = inflater
         myMenu = menu
-        val menuItem = menu.findItem(R.id.cocktailsSearch)
+        val menuItem = menu.findItem(R.id.movieListFragment)
         searchView = menuItem.actionView as SearchView
-        searchView.queryHint = "Search for a cocktail"
+        searchView.queryHint = "Search for a movie"
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 viewModel.setName(query)

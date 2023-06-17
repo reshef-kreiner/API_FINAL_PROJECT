@@ -15,5 +15,5 @@ interface FavoriteMovieDao {
     fun  getAllFavoriteMovies() : LiveData<List<Int>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFavoriteMovie(favoriteCocktail: FavoriteMovie)
+    fun insertFavoriteMovie(favoriteMovie: FavoriteMovie)
 }

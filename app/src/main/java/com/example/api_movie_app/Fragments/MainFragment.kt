@@ -16,7 +16,7 @@ import com.example.api_movie_app.Adapters.MainFragmentAdapter
 import com.example.api_movie_app.R
 import com.example.api_movie_app.ViewModels.MainViewModel
 import com.example.api_movie_app.ViewModels.MovieDetailViewModel
-import com.example.api_movie_app.data.models.Cocktail
+import com.example.api_movie_app.data.models.Movie
 import com.example.api_movie_app.databinding.FragmentMainPageBinding
 import com.example.api_movie_app.ui.description_page.DescriptionCocktailViewModel
 import com.example.api_movie_app.utils.Loading
@@ -104,9 +104,9 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun onCocktailClick(cocktail : Cocktail) {
-        movieDetailViewModel.selectCocktail(cocktail)
-        findNavController().navigate(R.id.action_mainPage_to_descriptionFragment)
+    fun onMovieClick(movie : Movie) {
+        movieDetailViewModel.selectMovie(movie)
+        findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment)
     }
 
     override fun onDestroy() {

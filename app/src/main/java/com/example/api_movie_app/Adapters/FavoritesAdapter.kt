@@ -6,33 +6,34 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.api_movie_app.data.models.Cocktail
-import com.example.api_movie_app.databinding.ItemCocktailBinding
+import com.example.api_movie_app.data.models.Movie
+import com.example.api_movie_app.databinding.FragmentMovieDetailBinding
+import com.example.api_movie_app.databinding.ItemMovieBinding
 
 
-class FavoritesAdapter(private val listener: CocktailItemListener) :
-    RecyclerView.Adapter<FavoritesAdapter.CocktailViewHolder>() {
+class FavoritesAdapter(private val listener: MovieItemListener) :
+    RecyclerView.Adapter<FavoritesAdapter.MovieViewHolder>() {
 
-    private val favoritesCocktails = ArrayList<Cocktail>()
+    private val favoriteMovies = ArrayList<Movie>()
 
-    class CocktailViewHolder(private val itemBinding: ItemCocktailBinding,
-                             private val listener: CocktailItemListener
+    class MovieViewHolder(private val itemBinding: FragmentMovieDetailBinding,
+                             private val listener: MovieItemListener
     )
         : RecyclerView.ViewHolder(itemBinding.root),
         View.OnClickListener {
 
-        private lateinit var cocktail: Cocktail
+        private lateinit var movie: Movie
 
         init {
             itemBinding.root.setOnClickListener(this)
             itemBinding.favorite.setOnClickListener(this)
         }
 
-        fun bind(item: Cocktail) {
-            this.cocktail = item
-            itemBinding.name.text = item.strDrink
+        fun bind(item: Movie) {
+            this.movie = item
+            itemBinding.name.text = item.title
             Glide.with(itemBinding.root)
-                .load(item.strDrinkThumb)
+                .load(item.image)
                 .into(itemBinding.image)
             itemBinding.favorite.isSelected = true
 
@@ -45,38 +46,38 @@ class FavoritesAdapter(private val listener: CocktailItemListener) :
         }
 
         override fun onClick(v: View?) {
-            listener.onCocktailClick(cocktail)
+            listener.onMovieClick(movie)
         }
 
-        fun onFavoriteClick(cocktail: Cocktail) {
-            listener.onFavoriteClick(cocktail)
+        fun onFavoriteClick(movie: Movie) {
+            listener.onFavoriteClick(movie)
         }
     }
 
-    fun setCocktails(cocktails : Collection<Cocktail>) {
-        this.favoritesCocktails.clear()
-        this.favoritesCocktails.addAll(cocktails)
+    fun setMovies(movies : Collection<Movie>) {
+        this.favoriteMovies.clear()
+        this.favoriteMovies.addAll(movies)
         notifyDataSetChanged()
     }
 
-    fun removeCocktail(cocktail: Cocktail) {
-        this.favoritesCocktails.remove(cocktail)
+    fun removeMovie(movie: Movie) {
+        this.favoriteMovies.remove(movie)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesAdapter.CocktailViewHolder {
-        val binding = ItemCocktailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CocktailViewHolder(binding, listener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        val binding = FragmentMovieDetailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return MovieViewHolder(binding, listener)
     }
 
-    override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) =
-        holder.bind(favoritesCocktails[position])
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
+        holder.bind(favoriteMovies[position])
 
 
-    override fun getItemCount() = favoritesCocktails.size
+    override fun getItemCount() = favoriteMovies.size
 
-    interface CocktailItemListene1r {
-        fun onCocktailClick(cocktail : Cocktail)
-        fun onFavoriteClick(cocktail: Cocktail)
+    interface MovieItemListener {
+        fun onMovieClick(movie : Movie)
+        fun onFavoriteClick(movie: Movie)
     }
 }
 

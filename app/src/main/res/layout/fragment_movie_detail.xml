@@ -24,7 +24,7 @@
             android:id="@+id/cocktailLayout">
 
             <TextView
-                android:id="@+id/cocktailName"
+                android:id="@+id/movieTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -48,7 +48,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cocktailName"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -58,8 +58,8 @@
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/white"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@id/cocktailName"
-                app:layout_constraintLeft_toRightOf="@id/cocktailName" />
+                app:layout_constraintBottom_toBottomOf="@id/movieTitle"
+                app:layout_constraintLeft_toRightOf="@id/movieTitle" />
 
 
             <TextView
@@ -76,7 +76,7 @@
                 app:layout_constraintLeft_toRightOf="@id/cocktailImage"
                 app:layout_constraintRight_toLeftOf="@id/measures"
 
-                app:layout_constraintTop_toBottomOf="@id/cocktailName"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@id/cocktailImage"
                 app:layout_constraintLeft_toRightOf="@id/ingredients"
-                app:layout_constraintTop_toBottomOf="@id/cocktailName"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle"
                 app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout

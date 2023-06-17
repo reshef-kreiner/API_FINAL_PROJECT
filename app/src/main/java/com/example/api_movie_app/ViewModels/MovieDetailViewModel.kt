@@ -2,8 +2,8 @@ package com.example.api_movie_app.ViewModels
 
 
 import androidx.lifecycle.*
-import com.example.api_movie_app.data.models.Cocktail
-import com.example.api_movie_app.data.repository.CocktailRepository
+import com.example.api_movie_app.data.models.Movie
+import com.example.api_movie_app.data.repositories.MovieRepository
 import com.example.api_movie_app.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,25 +14,28 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    val cocktailRepository: CocktailRepository): ViewModel() {
+    private val movieRepository: MovieRepository): ViewModel() {
 
-    private val mutableIsFavorite= MutableLiveData<Int>()
+    private val mutableIsFavorite = MutableLiveData<Int>()
+
+    // IN LECTURE
+//    private val _id = MutableLiveData<Int>()
+//    private val _movie = _id.switchMap { movieRepository.getMovie(it) } // WE DON'T HAVE getMovie
+
     val isFavorite: LiveData<Int> get() = mutableIsFavorite
 
     fun setIsFavorite(value: Int) {
         mutableIsFavorite.value = value
     }
-    private val _id =  MutableLiveData<Int>()
 
-    fun updateCocktail(cocktail: Cocktail) = viewModelScope.launch(Dispatchers.IO) {
-        cocktailRepository.updateCocktail(cocktail)
+    fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+        movieRepository.updateMovie(movie)
     }
 
+    private val mutableSelectedMovie = MutableLiveData<Movie>()
+    val selectedMovie: LiveData<Movie> get() = mutableSelectedMovie
 
-    private val mutableSelectedCocktail = MutableLiveData<Cocktail>()
-    val selectedCocktail: LiveData<Cocktail> get() = mutableSelectedCocktail
-
-    fun selectCocktail(cocktail: Cocktail) {
-        mutableSelectedCocktail.value = cocktail
+    fun selectMovie(movie: Movie) {
+        mutableSelectedMovie.value = movie
     }
 }

@@ -9,44 +9,46 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.api_movie_app.R
-import com.example.api_movie_app.data.models.Cocktail
-import com.example.api_movie_app.databinding.ItemCocktailBinding
+import com.example.api_movie_app.data.models.Movie
+import com.example.api_movie_app.databinding.FragmentMovieDetailBinding
 
 
-class MovieListAdapter(private val listener: CocktailItemListener) :
-    RecyclerView.Adapter<MovieListAdapter.CocktailViewHolder>() {
+class MovieListAdapter(private val listener: MovieItemListener) :
+    RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
 
-    private val cocktails = ArrayList<Cocktail>()
+    private val movies = ArrayList<Movie>()
 
-    class MovieListViewHolder(private val itemBinding: ItemCocktailBinding,
-                             private val listener: CocktailItemListener)
+    class MovieViewHolder(private val itemBinding: FragmentMovieDetailBinding,
+                          private val listener: MovieItemListener)
         : RecyclerView.ViewHolder(itemBinding.root),
         View.OnClickListener {
 
-        private lateinit var cocktail: Cocktail
+        private lateinit var movie: Movie
 
         init {
             itemBinding.root.setOnClickListener(this)
             itemBinding.favorite.setOnClickListener(this)
         }
 
-        fun bind(item: Cocktail) {
-            this.cocktail = item
-            itemBinding.name.text = item.strDrink
+        fun bind(item: Movie) {
+            this.movie = item
+            itemBinding.name.text = item.title
             Glide.with(itemBinding.root)
-                .load(item.strDrinkThumb)
+                .load(item.image)
+                //.circleCrop() USES IN LECTURE
                 .into(itemBinding.image)
 
-            if (item.isFavoriteCocktail == 1) {
+            if (item.isFavoriteMovie == 1) {
                 itemBinding.favorite.isSelected = true
             }
             else {
                 itemBinding.favorite.isSelected = false
             }
 
+            // DO WE NEED BOTH ^^^ ????
             itemBinding.favorite.setOnClickListener() {
                 Log.i("ffff","fffffff")
-                if (item.isFavoriteCocktail == 0) {
+                if (item.isFavoriteMovie == 0) {
                     itemBinding.favorite.isSelected = true
                 }
                 else {
@@ -57,34 +59,34 @@ class MovieListAdapter(private val listener: CocktailItemListener) :
 
         }
 
-        fun onFavoriteClick(cocktail: Cocktail) {
-            listener.onFavoriteClick(cocktail)
+        fun onFavoriteClick(movie: Movie) {
+            listener.onFavoriteClick(movie)
         }
 
         override fun onClick(v: View?) {
-            listener.onCocktailClick(cocktail)
+            listener.onMovieClick(movie) //In Lecture Movie.id
         }
     }
 
-    fun setCocktails(cocktails : Collection<Cocktail>) {
-        this.cocktails.clear()
-        this.cocktails.addAll(cocktails)
+    fun setMovies(cocktails : Collection<Movie>) {
+        this.movies.clear()
+        this.movies.addAll(movies)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailViewHolder {
-        val binding = ItemCocktailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CocktailViewHolder(binding,listener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        val binding = FragmentMovieDetailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return MovieViewHolder(binding,listener)
     }
 
-    override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) =
-        holder.bind(cocktails[position])
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
+        holder.bind(movies[position])
 
 
-    override fun getItemCount() = cocktails.size
+    override fun getItemCount() = movies.size
 
-    interface CocktailItemListener {
-        fun onCocktailClick(cocktailId : Cocktail)
-        fun onFavoriteClick(cocktail: Cocktail)
+    interface MovieItemListener { // CAN ADD MORE EVENTS IF WE WANT
+        fun onMovieClick(movieId : Movie) // Int instead of Movie in LECTURE
+        fun onFavoriteClick(movie: Movie)
     }
 }

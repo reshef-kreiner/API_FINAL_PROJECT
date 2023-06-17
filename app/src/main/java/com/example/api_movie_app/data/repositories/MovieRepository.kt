@@ -32,7 +32,7 @@ class MovieRepository @Inject constructor(
         { localDataSource.addMovies(it.results) } // Add 1 movie instead of many???
     )
 
-    fun getCocktailsByName(name: String, flag: Boolean) = performFetching {
+    fun getMovieByName(name: String, flag: Boolean) = performFetching {
         localDataSource.getMoviesByName(name)
     }
 
@@ -44,14 +44,13 @@ class MovieRepository @Inject constructor(
 //        localDataSource.deleteMovie()
 //    }
 
-    fun deleteMovies() {
-        localDataSource.deleteMovies()
-    }
+//    fun deleteMovies() {
+//        localDataSource.deleteMovies()
+//    }
 
     fun updateMovie(movie: Movie) {
         localDataSource.updateMovie(movie)
     }
-
 
     fun getFavoriteMovies() = performFetching {
         localDataSource.getFavoritesMovies()

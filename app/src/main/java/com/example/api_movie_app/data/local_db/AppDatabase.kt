@@ -10,21 +10,18 @@ import com.example.api_movie_app.data.local_db.MovieDao
 @Database(entities = [Movie::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
+    abstract fun favoriteMovieDao(): FavoriteMovieDao
 
     companion object {
         @Volatile
-        private var INSTANCE: AppDatabase? = null
+        private var instance: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "movie_database"
-                ).build()
-                INSTANCE = instance
-                instance
+        fun getDatabase(context: Context): AppDatabase =
+            instance ?: synchronized(this) {
+                Room.databaseBuilder(context.applicationContext,AppDatabase::class.java,"movies")
+                    .fallbackToDestructiveMigration().build().also {
+                        instance = it
+                    }
             }
-        }
     }
 }
