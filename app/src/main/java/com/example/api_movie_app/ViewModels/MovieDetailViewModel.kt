@@ -18,7 +18,7 @@ class MovieDetailViewModel @Inject constructor(
 
     private val mutableIsFavorite = MutableLiveData<Int>()
 
-    // IN LECTURE
+    // IN LECTURE 1:35 minute
 //    private val _id = MutableLiveData<Int>()
 //    private val _movie = _id.switchMap { movieRepository.getMovie(it) } // WE DON'T HAVE getMovie
 

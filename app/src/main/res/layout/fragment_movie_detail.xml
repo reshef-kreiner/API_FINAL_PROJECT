@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/cocktailLayout">
+            android:id="@+id/movieListLayout">
 
             <TextView
                 android:id="@+id/movieTitle"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@id/cocktailImage"
+                app:layout_constraintBottom_toTopOf="@id/movieImage"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +39,7 @@
 
 
             <ImageView
-                android:id="@+id/cocktailImage"
+                android:id="@+id/movieImage"
                 android:layout_width="189dp"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@id/movieTitle"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/isAlcoholic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:textColor="@color/white"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@id/movieTitle"
-                app:layout_constraintLeft_toRightOf="@id/movieTitle" />
+                app:layout_constraintLeft_toRightOf="@id/movieTitle" /> -->
 
 
             <TextView

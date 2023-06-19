@@ -68,7 +68,7 @@ class MovieListAdapter(private val listener: MovieItemListener) :
         }
     }
 
-    fun setMovies(cocktails : Collection<Movie>) {
+    fun setMovies(movies : Collection<Movie>) {
         this.movies.clear()
         this.movies.addAll(movies)
         notifyDataSetChanged()

@@ -49,7 +49,7 @@ class MovieDetailFragment : Fragment() {
         viewModel.selectedMovie.observe(viewLifecycleOwner) {
             updateCocktailViews(it)
 
-            // DO WE WANT TO ADD THE WHEN(it.status)?????
+            // DO WE WANT TO ADD THE WHEN(it.status)????? 1:42 in lecture loading success error
         }
     }
 

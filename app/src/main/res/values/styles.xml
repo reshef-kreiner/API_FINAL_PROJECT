@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.API_MOVIE_APP" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/background_gray</item>
+    </style>
+
+</resources>
