@@ -5,4 +5,8 @@
         <item name="colorPrimary">@color/background_gray</item>
     </style>
 
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/background_gray</item>
+    </style>
+
 </resources>

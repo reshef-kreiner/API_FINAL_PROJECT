@@ -6,7 +6,6 @@
     android:background="@color/background_gray"
     android:gravity="center">
 
-    <!-- Movie Image -->
     <ImageView
         android:id="@+id/movieImage"
         android:layout_width="225dp"
