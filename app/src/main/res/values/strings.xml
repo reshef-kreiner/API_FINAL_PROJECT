@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">API_MOVIE_APP</string>
-    <string name="main_page_title">Movie Reviews</string>
-    <string name="welcome_string">Embark on a cinematic journey like no other as we bring you the latest and greatest movie reviews, enlightening you with captivating stories, thrilling adventures, and unforgettable moments from the silver screen.</string>
+    <string name="app_name">Movie Mania</string>
+    <string name="main_page_title">Movie Mania</string>
+    <string name="welcome_string">Discover the magic of cinema with our curated movie reviews,
+        immersing you in captivating stories, thrilling adventures
+        and unforgettable moments</string>
     <string name="no_movies_found">No Movies Were Found</string>
 </resources>
