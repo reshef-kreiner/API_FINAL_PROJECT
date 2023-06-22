@@ -10,7 +10,6 @@ import com.example.api_movie_app.data.local_db.MovieDao
 @Database(entities = [Movie::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
-    abstract fun favoriteMovieDao(): FavoriteMovieDao
 
     companion object {
         @Volatile

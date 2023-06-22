@@ -4,4 +4,13 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="Theme.API_MOVIE_APP" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/background_gray</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/background_gray</item>
+    </style>
+
 </resources>

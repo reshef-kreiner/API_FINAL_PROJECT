@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.api_movie_app.R
 import com.example.api_movie_app.data.models.Movie
 import com.example.api_movie_app.databinding.FragmentMovieDetailBinding
+import com.example.api_movie_app.databinding.ItemMovieBinding
 
 
 class MovieListAdapter(private val listener: MovieItemListener) :
@@ -18,7 +19,7 @@ class MovieListAdapter(private val listener: MovieItemListener) :
 
     private val movies = ArrayList<Movie>()
 
-    class MovieViewHolder(private val itemBinding: FragmentMovieDetailBinding,
+    class MovieViewHolder(private val itemBinding: ItemMovieBinding,
                           private val listener: MovieItemListener)
         : RecyclerView.ViewHolder(itemBinding.root),
         View.OnClickListener {
@@ -75,7 +76,7 @@ class MovieListAdapter(private val listener: MovieItemListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = FragmentMovieDetailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MovieViewHolder(binding,listener)
     }
 

@@ -16,7 +16,7 @@ class FavoritesAdapter(private val listener: MovieItemListener) :
 
     private val favoriteMovies = ArrayList<Movie>()
 
-    class MovieViewHolder(private val itemBinding: FragmentMovieDetailBinding,
+    class MovieViewHolder(private val itemBinding: ItemMovieBinding,
                              private val listener: MovieItemListener
     )
         : RecyclerView.ViewHolder(itemBinding.root),
@@ -26,19 +26,19 @@ class FavoritesAdapter(private val listener: MovieItemListener) :
 
         init {
             itemBinding.root.setOnClickListener(this)
-            itemBinding.favorite.setOnClickListener(this)
+            itemBinding.favoriteIcon.setOnClickListener(this)
         }
 
         fun bind(item: Movie) {
             this.movie = item
-            itemBinding.name.text = item.title
+            itemBinding.movieTitle.text = item.title
             Glide.with(itemBinding.root)
                 .load(item.image)
-                .into(itemBinding.image)
-            itemBinding.favorite.isSelected = true
+                .into(itemBinding.movieImage)
+            itemBinding.favoriteIcon.isSelected = true
 
 
-            itemBinding.favorite.setOnClickListener() {
+            itemBinding.favoriteIcon.setOnClickListener() {
                 Log.i("ffff","fffffff")
                 onFavoriteClick(item)
             }
@@ -65,7 +65,7 @@ class FavoritesAdapter(private val listener: MovieItemListener) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = FragmentMovieDetailBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MovieViewHolder(binding, listener)
     }
 
