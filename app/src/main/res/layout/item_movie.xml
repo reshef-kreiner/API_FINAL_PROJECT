@@ -44,7 +44,7 @@
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_margin="4dp"
-            android:background="@drawable/favorite_menu_bar"
+            android:background="@drawable/movie_favorite_selector"
             app:layout_constraintBottom_toBottomOf="@+id/movieTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/movieTitle" />
