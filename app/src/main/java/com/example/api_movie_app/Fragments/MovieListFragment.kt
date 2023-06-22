@@ -84,6 +84,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
 
+                else -> {}
             }
 
             // NOT IN LECTURE

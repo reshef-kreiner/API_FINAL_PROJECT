@@ -9,12 +9,10 @@ import retrofit2.http.Query
 
 interface MovieService {
 
-    @GET("movie/popular")
+    @GET("movie/popular?api_key=a13e445388531e718cc651aefacac8cb")
     suspend fun getAllMovies() : Response<AllMovies>
 
-    @GET("movies/{id}")
-    suspend fun getMovieById(@Query("id") id: Int) : Response<AllMovies> // @Path?????
+//    @GET("movies/{id}?api_key=a13e445388531e718cc651aefacac8cb")
+//    suspend fun getMovieById(@Path("id") id: Int) : Response<AllMovies> // @Query?????
 
-    @GET("movies/{name}")
-    suspend fun getMoviesByName(@Query("s") name : String) : Response<AllMovies>
 }

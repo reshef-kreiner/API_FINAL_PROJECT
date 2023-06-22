@@ -27,32 +27,32 @@ class MovieListAdapter(private val listener: MovieItemListener) :
 
         init {
             itemBinding.root.setOnClickListener(this)
-            itemBinding.favorite.setOnClickListener(this)
+            itemBinding.favoriteIcon.setOnClickListener(this)
         }
 
         fun bind(item: Movie) {
             this.movie = item
-            itemBinding.name.text = item.title
+            itemBinding.movieTitle.text = item.title
             Glide.with(itemBinding.root)
                 .load(item.image)
                 //.circleCrop() USES IN LECTURE
-                .into(itemBinding.image)
+                .into(itemBinding.movieImage)
 
             if (item.isFavoriteMovie == 1) {
-                itemBinding.favorite.isSelected = true
+                itemBinding.favoriteIcon.isSelected = true
             }
             else {
-                itemBinding.favorite.isSelected = false
+                itemBinding.favoriteIcon.isSelected = false
             }
 
             // DO WE NEED BOTH ^^^ ????
-            itemBinding.favorite.setOnClickListener() {
+            itemBinding.favoriteIcon.setOnClickListener() {
                 Log.i("ffff","fffffff")
                 if (item.isFavoriteMovie == 0) {
-                    itemBinding.favorite.isSelected = true
+                    itemBinding.favoriteIcon.isSelected = true
                 }
                 else {
-                    itemBinding.favorite.isSelected = false
+                    itemBinding.favoriteIcon.isSelected = false
                 }
                 onFavoriteClick(item)
             }

@@ -20,33 +20,12 @@ class MovieRepository @Inject constructor(
         { localDataSource.addMovies(it.results) }
     )
 
-    fun getMovieById(id : Int) = performFetchingAndSaving(
-        { localDataSource.getMovieById(id) },
-        { remoteDataSource.getMovieId(id) },
-        { localDataSource.updateMovies(it.results) } // Add instead of Update???
-    )
+//    fun getMovieById(id : Int) = performFetchingAndSaving(
+//        { localDataSource.getMovieById(id) },
+//        { remoteDataSource.getMovieId(id) },
+//        { localDataSource.updateMovies(it.results) } // Add instead of Update???
+//    )
 
-    fun getMovieByName(name : String) = performFetchingAndSaving(
-        { localDataSource.getMoviesByName(name) },
-        { remoteDataSource.getMoviesName(name) },
-        { localDataSource.addMovies(it.results) } // Add 1 movie instead of many???
-    )
-
-    fun getMovieByName(name: String, flag: Boolean) = performFetching {
-        localDataSource.getMoviesByName(name)
-    }
-
-    fun addMovie(movie: Movie) {
-        localDataSource.addMovie(movie)
-    }
-
-//    fun deleteMovie() {
-//        localDataSource.deleteMovie()
-//    }
-
-//    fun deleteMovies() {
-//        localDataSource.deleteMovies()
-//    }
 
     fun updateMovie(movie: Movie) {
         localDataSource.updateMovie(movie)

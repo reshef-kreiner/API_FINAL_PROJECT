@@ -75,6 +75,8 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
+
+                else -> {}
             }
         }
     }

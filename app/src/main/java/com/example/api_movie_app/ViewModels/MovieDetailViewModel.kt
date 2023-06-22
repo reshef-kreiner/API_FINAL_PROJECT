@@ -16,21 +16,21 @@ import javax.inject.Inject
 class MovieDetailViewModel @Inject constructor(
     private val movieRepository: MovieRepository): ViewModel() {
 
-    private val mutableIsFavorite = MutableLiveData<Int>()
+//    private val mutableIsFavorite = MutableLiveData<Int>()
 
     // IN LECTURE 1:35 minute
 //    private val _id = MutableLiveData<Int>()
 //    private val _movie = _id.switchMap { movieRepository.getMovie(it) } // WE DON'T HAVE getMovie
 
-    val isFavorite: LiveData<Int> get() = mutableIsFavorite
+//    val isFavorite: LiveData<Int> get() = mutableIsFavorite
 
-    fun setIsFavorite(value: Int) {
-        mutableIsFavorite.value = value
-    }
-
-    fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
-        movieRepository.updateMovie(movie)
-    }
+//    fun setIsFavorite(value: Int) {
+//        mutableIsFavorite.value = value
+//    }
+//
+//    fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+//        movieRepository.updateMovie(movie)
+//    }
 
     private val mutableSelectedMovie = MutableLiveData<Movie>()
     val selectedMovie: LiveData<Movie> get() = mutableSelectedMovie
