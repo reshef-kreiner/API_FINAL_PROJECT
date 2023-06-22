@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -77,9 +79,16 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
         }
     }
 
+    // DO WE NEED THIS IN EVERY FRAGMENT?
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.nav_menu,menu)
+    }
+
     override fun onMovieClick(movie: Movie) {
         Log.i("clicked","boom")
-        findNavController().navigate(R.id.action_favoritesFragment2_to_movieDetailFragment2)
+        findNavController().navigate(R.id.action_favoritesFragment_to_movieDetailFragment)
         movieDetailViewModel.selectMovie(movie)
     }
 

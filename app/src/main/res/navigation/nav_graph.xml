@@ -8,22 +8,21 @@
         android:id="@+id/mainFragment"
         android:name="com.example.api_movie_app.Fragments.MainFragment"
         android:label="MainFragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_favoritesFragment2"
-            app:destination="@id/favoritesFragment2" />
+
         <action
             android:id="@+id/action_mainFragment_to_movieListFragment"
             app:destination="@id/movieListFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
+            android:id="@+id/action_mainFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favoritesFragment2"
+        android:id="@+id/favoritesFragment"
         android:name="com.example.api_movie_app.Fragments.FavoritesFragment"
         android:label="FavoritesFragment" >
+
         <action
-            android:id="@+id/action_favoritesFragment2_to_movieDetailFragment2"
+            android:id="@+id/action_favoritesFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
     </fragment>
     <fragment
@@ -34,11 +33,12 @@
         android:id="@+id/movieListFragment"
         android:name="com.example.api_movie_app.Fragments.MovieListFragment"
         android:label="MovieListFragment" >
+
+        <action
+            android:id="@+id/action_movieListFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
-        <action
-            android:id="@+id/action_movieListFragment_to_favoritesFragment2"
-            app:destination="@id/favoritesFragment2" />
     </fragment>
 </navigation>

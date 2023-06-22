@@ -2,6 +2,7 @@ package com.example.api_movie_app.Fragments
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -47,19 +48,40 @@ class MovieDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.selectedMovie.observe(viewLifecycleOwner) {
-            updateCocktailViews(it)
-
+            updateMovieViews(it)
             // DO WE WANT TO ADD THE WHEN(it.status)????? 1:42 in lecture loading success error
+//            when (it.status) {
+//                is Loading -> {
+//                    Log.i("movies changed","Loading")
+//                    binding.progressBar.visibility = View.VISIBLE
+//                    binding.noResults.visibility = View.GONE
+//                }
+//                is Success -> {
+//                    Log.i("movies changed","Success")
+//                    binding.progressBar.visibility = View.GONE
+//                    binding.noResults.visibility = View.GONE
+//                    adapter.setMovies(it.status.data!!) // (ArrayList(it.status.data)) IN LECTURE
+//                }
+//
+//                is Error -> {
+//                    Log.i("movies changed","Error")
+//                    binding.progressBar.visibility = View.GONE
+//                    binding.noResults.visibility = View.GONE
+//                    Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
+//                }
+//            }
         }
     }
 
 
 
     //   #########################################
-    private fun updateCocktailViews(movie: Movie) {
-        binding.movieTitle.text = movie.title // ONLY CHANGED THIS
-        binding.isAlcoholic.text = movie.strAlcoholic
-        Glide.with(this).load(movie.image).into(binding.cocktailImage) // CircleCrop IN LECTURE
+    private fun updateMovieViews(movie: Movie) {
+        binding.movieTitle.text = movie.title
+        binding.language.text = movie.language
+        binding.movieReview.text = movie.review
+        binding.rating.text = movie.rating.toString()
+        Glide.with(this).load(movie.image).into(binding.movieImage) // CircleCrop IN LECTURE
 //        if (cocktail.strInstructions != null) binding.instructions.text =
 //            cocktail.strInstructions else binding.bottomInstructionsLayout.visibility =
 //            View.INVISIBLE
@@ -109,7 +131,7 @@ class MovieDetailFragment : Fragment() {
 //            binding.measures.text = drinkMeasureStr
 //        }
         binding.progressBar.visibility = View.GONE
-        binding.cocktailLayout.visibility = View.VISIBLE
+        binding.detailLayout.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

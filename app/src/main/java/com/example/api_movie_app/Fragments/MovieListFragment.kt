@@ -16,13 +16,7 @@ import com.example.api_movie_app.Adapters.MovieListAdapter
 import com.example.api_movie_app.R
 import com.example.api_movie_app.ViewModels.MovieDetailViewModel
 import com.example.api_movie_app.ViewModels.MovieListViewModel
-import com.example.api_movie_app.data.loacal_db.CocktailDao
-import com.example.api_movie_app.data.models.Cocktail
 import com.example.api_movie_app.data.models.Movie
-import com.example.api_movie_app.data.repository.CocktailRepository
-import com.example.api_movie_app.databinding.FragmentCocktailsSearchBinding
-import com.example.api_movie_app.ui.description_page.DescriptionCocktailViewModel
-import com.example.api_movie_app.ui.favorites.FavoritesViewModel
 import com.example.api_movie_app.utils.Loading
 import com.example.api_movie_app.utils.Success
 import dagger.hilt.android.AndroidEntryPoint
@@ -77,7 +71,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
                     binding.noResults.visibility = View.GONE
                 }
                 is Success -> {
-                    Log.i("cocktails changed","Success")
+                    Log.i("movies changed","Success")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
                     adapter.setMovies(it.status.data!!) // (ArrayList(it.status.data)) IN LECTURE
@@ -89,6 +83,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
                     binding.noResults.visibility = View.GONE
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
+
             }
 
             // NOT IN LECTURE
@@ -120,40 +115,46 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
 
 
     //    ########################################
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater?.let { super.onCreateOptionsMenu(menu, it) }
+//        menu.clear()
+//        inflater?.inflate(R.menu.nav_menu, menu)
+//        menuInflater = inflater
+//        myMenu = menu
+//        val menuItem = menu.findItem(R.id.movieListFragment)
+//        searchView = menuItem.actionView as SearchView
+//        searchView.queryHint = "Search for a movie"
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                viewModel.setName(query)
+//                return false
+//            }
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                viewModel.setName(newText)
+//                return false
+//            }
+//        })
+//
+//        menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+//            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+//                // TODO: do something...
+//                return true
+//            }
+//
+//            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+//                //myMenu.clear()
+//                //menuInflater.inflate(R.menu.nav_menu, menu)
+//                activity?.onBackPressed()
+//                //findNavController().navigate(R.id.action_cocktailsSearch_to_mainPage)
+//                return true
+//            }
+//        })
+//    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater?.let { super.onCreateOptionsMenu(menu, it) }
+        super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
-        inflater?.inflate(R.menu.nav_menu, menu)
-        menuInflater = inflater
-        myMenu = menu
-        val menuItem = menu.findItem(R.id.movieListFragment)
-        searchView = menuItem.actionView as SearchView
-        searchView.queryHint = "Search for a movie"
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.setName(query)
-                return false
-            }
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.setName(newText)
-                return false
-            }
-        })
-
-        menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                // TODO: do something...
-                return true
-            }
-
-            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                //myMenu.clear()
-                //menuInflater.inflate(R.menu.nav_menu, menu)
-                activity?.onBackPressed()
-                //findNavController().navigate(R.id.action_cocktailsSearch_to_mainPage)
-                return true
-            }
-        })
+        inflater.inflate(R.menu.nav_menu,menu)
     }
 
 
