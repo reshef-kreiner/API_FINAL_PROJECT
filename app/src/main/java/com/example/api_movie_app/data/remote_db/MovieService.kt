@@ -1,5 +1,6 @@
 package com.example.api_movie_app.data.remote_db
 
+import android.util.Log
 import com.example.api_movie_app.data.models.Movie
 import com.example.api_movie_app.data.models.AllMovies
 import retrofit2.Response

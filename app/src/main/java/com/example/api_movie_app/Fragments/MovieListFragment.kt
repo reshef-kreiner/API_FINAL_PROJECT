@@ -66,19 +66,19 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
             Log.i("movies changed","start") // ARE THESE LOG LINES NECESSARY?
             when (it.status) {
                 is Loading -> {
-                    Log.i("movies changed","Loading")
+                    Log.i("movies changed","Loadingggggggg")
                     binding.progressBar.visibility = View.VISIBLE
                     binding.noResults.visibility = View.GONE
                 }
                 is Success -> {
-                    Log.i("movies changed","Success")
+                    Log.i("movies changed","Successsssssss")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
                     adapter.setMovies(it.status.data!!) // (ArrayList(it.status.data)) IN LECTURE
                 }
 
                 is Error -> {
-                    Log.i("movies changed","Error")
+                    Log.i("movies changed","Errorrrrrrrrr")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
@@ -89,6 +89,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
 
             // NOT IN LECTURE
             if (adapter.itemCount == 0 && it.status !is Loading) {
+                Log.i("movies changed","Item count is zerooooo")
                 binding.noResults.visibility = View.VISIBLE
                 //Toast.makeText(requireContext(), "No results", Toast.LENGTH_SHORT).show()
             }

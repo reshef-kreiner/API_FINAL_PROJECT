@@ -4,20 +4,20 @@
 
 
 
-    <item android:id="@+id/mainPage"
+    <item android:id="@+id/mainFragment"
         android:icon="@drawable/main_menu_icon"
         android:title="Main"
         app:showAsAction="ifRoom"/>
 
 
-    <item android:id="@+id/movieListFragment_menu_bar"
+    <item android:id="@+id/movieListFragment"
         android:icon="@drawable/movie_menu_icon"
         android:title="Movie List"
         app:showAsAction="ifRoom|collapseActionView"
         android:actionLayout="@layout/fragment_movie_list" />
 
 
-    <item android:id="@+id/favoritesFragment_menu_bar"
+    <item android:id="@+id/favoritesFragment"
         android:icon="@drawable/full_favorite_menu_bar"
         android:title="Favorites"
         app:showAsAction="ifRoom"/>

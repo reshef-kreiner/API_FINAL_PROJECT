@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.MenuItemCompat
@@ -50,10 +51,13 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("MainActivity", "onOptionsItemSelected called")
         val currentFragment = navController.currentDestination?.id // CHANGED FROM getId()
         if (currentFragment == R.id.movieListFragment && item.itemId != R.id.movieListFragment) {
             MenuItemCompat.collapseActionView(myMenu.findItem(R.id.movieListFragment))
         }
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        val handled = item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        Log.d("MainActivity", "Menu item handled: $handled") // Add this line
+        return handled
     }
 }
