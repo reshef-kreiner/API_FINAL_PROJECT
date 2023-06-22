@@ -2,23 +2,23 @@ package com.example.api_movie_app.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "movies")
 data class Movie(
     var isFavoriteMovie: Int = 0,
-    val year: Int,
-    val title: String,
+    @SerializedName("backdrop_path")
+    val image: String,
+    @PrimaryKey
+    val id: Int,
+    @SerializedName("original_language")
+    val language : String,
+    @SerializedName("overview")
     val review: String,
-    val image: String?,
-    @PrimaryKey(autoGenerate = true) val id: Int
-) {
-    constructor(isFavoriteMovie: Int, title: String, year: Int, review: String, image: String?
-        ) : this(
-        isFavoriteMovie,
-        year,
-        title,
-        review,
-        image,
-        0
-    )
+    @SerializedName("release_date")
+    val data: String,
+    val title: String,
+    @SerializedName("vote_average")
+    val rating: Double,
+    ) {
 }
