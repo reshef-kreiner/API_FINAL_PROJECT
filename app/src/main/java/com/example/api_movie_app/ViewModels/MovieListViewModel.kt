@@ -1,13 +1,9 @@
 package com.example.api_movie_app.ViewModels
 
 
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.api_movie_app.data.models.AllMovies
 import com.example.api_movie_app.data.models.Movie
-import com.example.api_movie_app.data.models.FavoriteMovie
 import com.example.api_movie_app.data.repositories.MovieRepository
-import com.example.api_movie_app.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

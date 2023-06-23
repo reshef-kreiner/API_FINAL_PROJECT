@@ -1,10 +1,10 @@
 package com.example.api_movie_app.data.models
 
 data class AllMovies (
-    val page: Page,
+    val page: Int,
     val results : List<Movie>,
-    val totalPages : TotalPages,
-    val totalResults: TotalResults
+    val totalPages : Int,
+    val totalResults: Int
 ){
 
 }

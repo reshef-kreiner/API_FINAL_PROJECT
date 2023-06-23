@@ -33,7 +33,7 @@ class FavoritesAdapter(private val listener: MovieItemListener) :
             this.movie = item
             itemBinding.movieTitle.text = item.title
             Glide.with(itemBinding.root)
-                .load(item.image)
+                .load("https://www.themoviedb.org/t/p/original" + item.image)
                 .into(itemBinding.movieImage)
             itemBinding.favoriteIcon.isSelected = true
 

@@ -35,7 +35,7 @@ class MovieListAdapter(private val listener: MovieItemListener) :
             this.movie = item
             itemBinding.movieTitle.text = item.title
             Glide.with(itemBinding.root)
-                .load(item.image)
+                .load("https://www.themoviedb.org/t/p/original" + item.image)
                 //.circleCrop() USES IN LECTURE
                 .into(itemBinding.movieImage)
 

@@ -14,11 +14,9 @@ data class Movie(
     @SerializedName("original_language")
     val language : String,
     @SerializedName("overview")
-    val review: String,
+    val summary: String,
     @SerializedName("release_date")
     val data: String,
-    val title: String,
-    @SerializedName("vote_average")
-    val rating: Double,
+    val title: String
     ) {
 }
