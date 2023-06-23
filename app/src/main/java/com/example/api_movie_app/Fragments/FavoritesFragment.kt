@@ -76,7 +76,6 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
 
-                else -> {}
             }
         }
     }

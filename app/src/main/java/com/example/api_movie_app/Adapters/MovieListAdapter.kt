@@ -39,22 +39,12 @@ class MovieListAdapter(private val listener: MovieItemListener) :
                 //.circleCrop() USES IN LECTURE
                 .into(itemBinding.movieImage)
 
-            if (item.isFavoriteMovie == 1) {
-                itemBinding.favoriteIcon.isSelected = true
-            }
-            else {
-                itemBinding.favoriteIcon.isSelected = false
-            }
+            itemBinding.favoriteIcon.isSelected = item.isFavoriteMovie == 1
 
             // DO WE NEED BOTH ^^^ ????
             itemBinding.favoriteIcon.setOnClickListener() {
-                Log.i("ffff","fffffff")
-                if (item.isFavoriteMovie == 0) {
-                    itemBinding.favoriteIcon.isSelected = true
-                }
-                else {
-                    itemBinding.favoriteIcon.isSelected = false
-                }
+                Log.i("FavoriteIcon","Favorite icon click")
+                itemBinding.favoriteIcon.isSelected = item.isFavoriteMovie == 0
                 onFavoriteClick(item)
             }
 

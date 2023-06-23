@@ -4,6 +4,7 @@ package com.example.api_movie_app.ViewModels
 import androidx.lifecycle.*
 import com.example.api_movie_app.data.models.Movie
 import com.example.api_movie_app.data.repositories.MovieRepository
+import com.example.api_movie_app.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +20,9 @@ class MovieListViewModel @Inject constructor(
     fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
         movieRepository.updateMovie(movie)
     }
+}
 
+//
 //    fun <T : Any?> MutableLiveData<T>.default(initialValue: T) = apply { setValue(initialValue) }
 //
 //    private var _name = MutableLiveData<String>().default("")
@@ -49,4 +52,4 @@ class MovieListViewModel @Inject constructor(
 //        _name.value = name
 //    }
 
-}
+

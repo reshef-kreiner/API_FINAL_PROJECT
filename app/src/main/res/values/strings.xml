@@ -5,4 +5,6 @@
         immersing you in captivating stories, thrilling adventures
         and unforgettable moments</string>
     <string name="no_movies_found">No Movies Were Found</string>
+    <string name="releaseDate">Release Date:</string>
+    <string name="language">Language:</string>
 </resources>

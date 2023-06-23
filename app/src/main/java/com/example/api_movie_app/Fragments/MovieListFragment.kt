@@ -63,7 +63,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
         binding.moviesRv.adapter = adapter
 
         viewModel.movies.observe(viewLifecycleOwner) {
-            Log.i("movies changed","start") // ARE THESE LOG LINES NECESSARY?
+            Log.i("movies changed","start")
             when (it.status) {
                 is Loading -> {
                     Log.i("movies changed","Loadingggggggg")
@@ -84,7 +84,6 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
                 }
 
-                else -> {}
             }
 
             // NOT IN LECTURE
@@ -107,51 +106,9 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
     }
 
     override fun onMovieClick(movie: Movie) {
-        //MenuItemCompat.collapseActionView(myMenu.findItem(R.id.movieListFragment))
-        myMenu.clear()
-        menuInflater.inflate(R.menu.nav_menu, myMenu)
-        findNavController().navigate(R.id.action_MovieList_to_MovieDetailFragment)
+        findNavController().navigate(R.id.action_movieListFragment_to_movieDetailFragment)
         movieDetailViewModel.selectMovie(movie)
     }
-
-
-
-    //    ########################################
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater?.let { super.onCreateOptionsMenu(menu, it) }
-//        menu.clear()
-//        inflater?.inflate(R.menu.nav_menu, menu)
-//        menuInflater = inflater
-//        myMenu = menu
-//        val menuItem = menu.findItem(R.id.movieListFragment)
-//        searchView = menuItem.actionView as SearchView
-//        searchView.queryHint = "Search for a movie"
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String): Boolean {
-//                viewModel.setName(query)
-//                return false
-//            }
-//            override fun onQueryTextChange(newText: String): Boolean {
-//                viewModel.setName(newText)
-//                return false
-//            }
-//        })
-//
-//        menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-//            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-//                // TODO: do something...
-//                return true
-//            }
-//
-//            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-//                //myMenu.clear()
-//                //menuInflater.inflate(R.menu.nav_menu, menu)
-//                activity?.onBackPressed()
-//                //findNavController().navigate(R.id.action_cocktailsSearch_to_mainPage)
-//                return true
-//            }
-//        })
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

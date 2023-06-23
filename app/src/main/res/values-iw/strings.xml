@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">סרט מאניה</string>
+    <string name="main_page_title">סרט מאניה</string>
+    <string name="welcome_string">גלה את הקסם של הקולנוע עם ביקורות הסרטים שלנו,
+        שיעטפו אותך בסיפורים שובי לב, הרפתקאות מרגשות
+        ורגעים בלתי נשכחים</string>
+    <string name="no_movies_found">לא נמצאו סרטים</string>
+    <string name="releaseDate">תאריך הוצאה:</string>
+    <string name="language">שפה:</string>
+</resources>

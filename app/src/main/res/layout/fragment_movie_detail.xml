@@ -7,50 +7,96 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background_gray"
-    android:gravity="center"
+    android:gravity="center|top"
     tools:context="Fragments.MovieDetailFragment">
-
-    <ImageView
-        android:id="@+id/movieImage"
-        android:layout_width="225dp"
-        android:layout_height="199dp"
-        android:src="@drawable/ic_image_default_foreground" />
 
     <TextView
         android:id="@+id/movieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textStyle="bold"
         android:gravity="center"
-        android:textColor="@color/text_blue"
-        android:padding="16dp" />
-
-    <TextView
-        android:id="@+id/releaseDate"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
-        android:padding="16dp" />
-
-    <TextView
-        android:id="@+id/language"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
-        android:padding="16dp" />
-
-
-    <TextView
-        android:id="@+id/movieReview"
-        android:textSize="16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
         android:padding="16dp"
-        android:gravity="center" />
+        android:textColor="@color/text_blue"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/movieImage"
+        android:layout_width="411dp"
+        android:layout_height="199dp"
+        android:src="@drawable/ic_image_default_foreground"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:paddingTop="8dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/releaseDate"
+            android:textColor="@color/text_blue"
+            android:textSize="25sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/releaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textColor="@color/text_blue"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:paddingTop="8dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textColor="@color/text_blue"
+            android:textSize="25sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textColor="@color/text_blue"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/movieReview"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:padding="16dp"
+            android:gravity="center" />
+
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/progressBar"
