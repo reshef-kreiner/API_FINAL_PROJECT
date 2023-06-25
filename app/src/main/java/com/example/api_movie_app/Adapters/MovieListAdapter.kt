@@ -2,15 +2,11 @@ package com.example.api_movie_app.Adapters
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.api_movie_app.R
 import com.example.api_movie_app.data.models.Movie
-import com.example.api_movie_app.databinding.FragmentMovieDetailBinding
 import com.example.api_movie_app.databinding.ItemMovieBinding
 
 
@@ -36,12 +32,10 @@ class MovieListAdapter(private val listener: MovieItemListener) :
             itemBinding.movieTitle.text = item.title
             Glide.with(itemBinding.root)
                 .load("https://www.themoviedb.org/t/p/original" + item.image)
-                //.circleCrop() USES IN LECTURE
                 .into(itemBinding.movieImage)
 
             itemBinding.favoriteIcon.isSelected = item.isFavoriteMovie == 1
 
-            // DO WE NEED BOTH ^^^ ????
             itemBinding.favoriteIcon.setOnClickListener() {
                 Log.i("FavoriteIcon","Favorite icon click")
                 itemBinding.favoriteIcon.isSelected = item.isFavoriteMovie == 0
@@ -55,7 +49,7 @@ class MovieListAdapter(private val listener: MovieItemListener) :
         }
 
         override fun onClick(v: View?) {
-            listener.onMovieClick(movie) //In Lecture Movie.id
+            listener.onMovieClick(movie)
         }
     }
 
@@ -76,8 +70,8 @@ class MovieListAdapter(private val listener: MovieItemListener) :
 
     override fun getItemCount() = movies.size
 
-    interface MovieItemListener { // CAN ADD MORE EVENTS IF WE WANT
-        fun onMovieClick(movieId : Movie) // Int instead of Movie in LECTURE
+    interface MovieItemListener {
+        fun onMovieClick(movieId : Movie)
         fun onFavoriteClick(movie: Movie)
     }
 }

@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -36,11 +35,6 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
 
     private  lateinit var  adapter: MovieListAdapter
 
-    private lateinit var searchView : SearchView
-
-    private lateinit var myMenu: Menu
-
-    private lateinit var menuInflater : MenuInflater
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,19 +60,19 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
             Log.i("movies changed","start")
             when (it.status) {
                 is Loading -> {
-                    Log.i("movies changed","Loadingggggggg")
+                    Log.i("movies changed","Loadingg")
                     binding.progressBar.visibility = View.VISIBLE
                     binding.noResults.visibility = View.GONE
                 }
                 is Success -> {
-                    Log.i("movies changed","Successsssssss")
+                    Log.i("movies changed","Success")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
-                    adapter.setMovies(it.status.data!!) // (ArrayList(it.status.data)) IN LECTURE
+                    adapter.setMovies(it.status.data!!)
                 }
 
                 is Error -> {
-                    Log.i("movies changed","Errorrrrrrrrr")
+                    Log.i("movies changed","Error")
                     binding.progressBar.visibility = View.GONE
                     binding.noResults.visibility = View.GONE
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_LONG).show()
@@ -86,11 +80,9 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemListener {
 
             }
 
-            // NOT IN LECTURE
             if (adapter.itemCount == 0 && it.status !is Loading) {
-                Log.i("movies changed","Item count is zerooooo")
+                Log.i("movies changed","Item count is zeroo")
                 binding.noResults.visibility = View.VISIBLE
-                //Toast.makeText(requireContext(), "No results", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -30,14 +30,8 @@ class MainActivity : AppCompatActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
                 as NavHostFragment
         navController = navHostFragment.navController
-
-        // THIS IS WHAT HE USES IN LECTURE
-        //val appBarConfiguration = AppBarConfiguration(navController.graph)
-        //binding.toolbar.setupWithNavController(navController,appBarConfiguration)
-
-        // THIS IS WHAT WE ARE USING
         supportActionBar?.title = ""
-        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000000")))
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#2D3935")))
     }
 
 
@@ -52,12 +46,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.d("MainActivity", "onOptionsItemSelected called")
-        val currentFragment = navController.currentDestination?.id // CHANGED FROM getId()
+        val currentFragment = navController.currentDestination?.id
         if (currentFragment == R.id.movieListFragment && item.itemId != R.id.movieListFragment) {
             MenuItemCompat.collapseActionView(myMenu.findItem(R.id.movieListFragment))
         }
         val handled = item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-        Log.d("MainActivity", "Menu item handled: $handled") // Add this line
+        Log.d("MainActivity", "Menu item handled: $handled")
         return handled
     }
 }

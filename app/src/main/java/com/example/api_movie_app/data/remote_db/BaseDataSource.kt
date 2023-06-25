@@ -12,15 +12,15 @@ abstract class BaseDataSource {
         try {
             val result = call()
             if (result.isSuccessful) {
-                Log.d("Result Call", "Result call is gooooooodddddd") // Add this line to log the API call
+                Log.d("Result Call", "Result call is GOOD")
                 val body = result.body()
                 if (body != null) return Resource.success(body)
             }
-            Log.d("Result Call", "Result call is BAAAAADDDDDDDD") // Add this line to log the API call
+            Log.d("Result Call", "Result call is BAD")
             return Resource.error("Network call has failed for the following reason: " +
                     "${result.message()} ${result.code()}")
         } catch (e : Exception) {
-            Log.d("Result Call", "Result call is ERRROOOOOOOOORRRRR") // Add this line to log the API call
+            Log.d("Result Call", "Result call is ERROR")
             e.printStackTrace();
             return Resource.error("Network call has failed for the following reason: " +
                     (e.localizedMessage ?: e.toString()))

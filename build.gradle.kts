@@ -6,7 +6,6 @@ plugins {
 }
 
 
-
 buildscript {
     repositories {
         google()
@@ -18,7 +17,3 @@ buildscript {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
     }
 }
-
-//tasks.register("clean", Delete) {
-//    delete(rootProject.buildDir)
-//}

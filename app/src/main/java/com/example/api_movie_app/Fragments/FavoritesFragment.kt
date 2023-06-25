@@ -46,7 +46,6 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentFavoritesBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -80,7 +79,6 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
         }
     }
 
-    // DO WE NEED THIS IN EVERY FRAGMENT?
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
@@ -88,7 +86,6 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.MovieItemListener  {
     }
 
     override fun onMovieClick(movie: Movie) {
-        Log.i("clicked","boom")
         findNavController().navigate(R.id.action_favoritesFragment_to_movieDetailFragment)
         movieDetailViewModel.selectMovie(movie)
     }

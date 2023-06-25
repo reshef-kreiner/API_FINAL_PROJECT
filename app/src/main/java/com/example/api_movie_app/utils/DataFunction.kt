@@ -1,13 +1,9 @@
 package com.example.api_movie_app.utils
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.example.api_movie_app.data.models.AllMovies
-import com.example.api_movie_app.data.models.Movie
 import kotlinx.coroutines.Dispatchers
-import retrofit2.Response
 
 fun <T,A> performFetchingAndSaving(
     localDbFetch: () -> LiveData<T>,

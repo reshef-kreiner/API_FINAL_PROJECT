@@ -22,7 +22,6 @@ class MovieDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -42,7 +41,6 @@ class MovieDetailFragment : Fragment() {
 
         viewModel.selectedMovie.observe(viewLifecycleOwner) {
             updateMovieViews(it)
-            // DO WE WANT TO ADD THE WHEN(it.status)????? 1:42 in lecture loading success error
         }
     }
 
@@ -52,7 +50,8 @@ class MovieDetailFragment : Fragment() {
         binding.language.text = movie.language
         binding.releaseDate.text = movie.data
         binding.movieReview.text = movie.summary
-        Glide.with(this).load("https://www.themoviedb.org/t/p/original" + movie.image).into(binding.movieImage) // CircleCrop IN LECTURE
+        Glide.with(this).load("https://www.themoviedb.org/t/p/original" + movie.image)
+            .into(binding.movieImage)
         binding.progressBar.visibility = View.GONE
         binding.detailLayout.visibility = View.VISIBLE
     }
